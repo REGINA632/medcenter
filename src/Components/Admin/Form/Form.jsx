@@ -12,17 +12,21 @@ import { Button } from "@mui/material";
 import "./Form.css";
 
 const initValues = {
+  имя: "",
+  фамилия: "",
+  отчество: "",
+  дата_рождение: "",
+  номер_паспорта: "",
+  адрес: "",
+  город: "",
+  район: "",
+  телефон: "",
+  почта: "",
+  врач: "",
   title: "",
-  type: "",
-  price: "",
-  description: "",
-  img: "",
+  инн: "",
   data: "",
-  producer: "",
-  cast: "",
-  img2: "",
-  trailer: "",
-  count: 0,
+  time: "",
 };
 
 const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
@@ -51,6 +55,7 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
     };
     setInpValues(obj);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let obj = {
@@ -73,125 +78,212 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
       >
         <TextField
           className="text-field"
-          name="title"
-          value={inpValues.title}
+          name="имя"
+          value={inpValues.имя}
           onChange={(e) => handleChange(e)}
           id="outlined-basic"
-          label="Title"
+          label="Имя"
           variant="outlined"
         />
+
+        <TextField
+          className="text-field"
+          name="фамилия"
+          value={inpValues.фамилия}
+          onChange={(e) => handleChange(e)}
+          id="outlined-basic"
+          label="Фамилия"
+          variant="outlined"
+        />
+        <TextField
+          className="text-field"
+          name="отчество"
+          value={inpValues.отчество}
+          onChange={(e) => handleChange(e)}
+          id="outlined-basic"
+          label="Отчество"
+          variant="outlined"
+        />
+        {/* <TextField
+          className="text-field"
+          name="дата_рождение"
+          value={inpValues.дата_рождение}
+          onChange={(e) => handleChange(e)}
+          id="outlined-basic"
+          label="Дата Рождения"
+          variant="outlined"
+        /> */}
+        <TextField
+          className="text-field"
+          variant="outlined"
+          id="date outlined-basic"
+          label="Дата Рождения"
+          type="date"
+          defaultValue="2017-05-24"
+          sx={{ width: 220 }}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={inpValues.дата_рождение}
+          onChange={(e) => handleChange(e)}
+          name="дата_рождение"
+        />
+        <TextField
+          className="text-field"
+          name="номер_паспорта"
+          value={inpValues.номер_паспорта}
+          onChange={(e) => handleChange(e)}
+          id="outlined-basic"
+          label="Паспортные данные"
+          variant="outlined"
+        />
+        <TextField
+          className="text-field"
+          name="инн"
+          value={inpValues.инн}
+          onChange={(e) => handleChange(e)}
+          id="outlined-basic"
+          label="ИНН"
+          variant="outlined"
+          rows={3}
+        />
         <FormControl className="text-field">
-          <InputLabel id="demo-simple-select-label">Type</InputLabel>
+          <InputLabel id="demo-simple-select-label">Город</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            name="type"
-            value={inpValues.type}
-            label="Type"
+            name="город"
+            value={inpValues.город}
+            label="Город"
             onChange={(e) => handleChange(e)}
           >
-            <MenuItem value={"Action/Adventure"}>Action/Adventure</MenuItem>
-            <MenuItem value={"Animation"}>Animation</MenuItem>
-            <MenuItem value={"Classics"}>Classics</MenuItem>
-            <MenuItem value={"Comedy"}>Comedy</MenuItem>
-            <MenuItem value={"Drama"}>Drama</MenuItem>
-            <MenuItem value={"Fantasy"}>Fantasy</MenuItem>
-            <MenuItem value={"Musical"}>Musical</MenuItem>
-            <MenuItem value={"Romance"}>Romance</MenuItem>
-            <MenuItem value={"Science Fiction"}>Science Fiction</MenuItem>
+            <MenuItem value={"Намозов Улугбек Тагойбекович"}>Бишкек </MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl className="text-field">
+          <InputLabel id="demo-simple-select-label">Район</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            name="район"
+            value={inpValues.район}
+            label="Район"
+            onChange={(e) => handleChange(e)}
+          >
+            <MenuItem value={"Ленинский р-он"}>Ленинский р-он</MenuItem>
+            <MenuItem value={"Октябрьский р-он"}>Октябрьский р-он</MenuItem>
+            <MenuItem value={"Первомайский р-он"}>Первомайский р-он</MenuItem>
+            <MenuItem value={"Свердловский р-он"}>Свердловский р-он</MenuItem>
           </Select>
         </FormControl>
         <TextField
           className="text-field"
-          name="price"
-          value={inpValues.price}
+          name="адрес"
+          value={inpValues.адрес}
           onChange={(e) => handleChange(e)}
           id="outlined-basic"
-          label="Price"
+          label="Улица/Дом"
           variant="outlined"
         />
         <TextField
           className="text-field"
-          name="img"
-          value={inpValues.img}
+          name="телефон"
+          value={inpValues.телефон}
           onChange={(e) => handleChange(e)}
           id="outlined-basic"
-          label="Image"
+          label="Номер телефона"
           variant="outlined"
         />
         <TextField
           className="text-field"
-          name="description"
-          value={inpValues.description}
+          name="почта"
+          value={inpValues.почта}
           onChange={(e) => handleChange(e)}
           id="outlined-basic"
-          label="Description"
+          label="Адрес электронной почты"
           variant="outlined"
-          multiline
-          rows={3}
+        />
+        <FormControl className="text-field">
+          <InputLabel id="demo-simple-select-label">Врач</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            name="врач"
+            value={inpValues.врач}
+            label="Врач"
+            onChange={(e) => handleChange(e)}
+          >
+            <MenuItem value={"Намозов Улугбек Тагойбекович"}>
+              Намозов Улугбек Тагойбекович
+            </MenuItem>
+            <MenuItem value={"Магоматова Лариса Руслановна"}>
+              Магоматова Лариса Руслановна
+            </MenuItem>
+            <MenuItem value={"Ряскин Владимир Иванович"}>
+              Ряскин Владимир Иванович
+            </MenuItem>
+            <MenuItem value={"Жаринова Мария Владимировна"}>
+              Жаринова Мария Владимировна
+            </MenuItem>
+            <MenuItem value={"Маленков Дмитрий Андреевич"}>
+              Маленков Дмитрий Андреевич
+            </MenuItem>
+          </Select>
+        </FormControl>
+        <TextField
+          className="text-field"
+          name="title"
+          value={inpValues.title}
+          onChange={(e) => handleChange(e)}
+          id="outlined-basic"
+          label="Примечание"
+          variant="outlined"
         />
         <TextField
           className="text-field"
-          name="data"
+          variant="outlined"
+          id="date outlined-basic"
+          label="Дата"
+          type="date"
+          sx={{ width: 220 }}
+          InputLabelProps={{
+            shrink: true,
+          }}
           value={inpValues.data}
           onChange={(e) => handleChange(e)}
-          id="outlined-basic"
-          label="Data"
-          variant="outlined"
+          name="data"
         />
-        <TextField
-          className="text-field"
-          name="produced"
-          value={inpValues.produced}
-          onChange={(e) => handleChange(e)}
-          id="outlined-basic"
-          label="Produced"
-          variant="outlined"
-        />
-        <TextField
-          className="text-field"
-          name="cast"
-          value={inpValues.cast}
-          onChange={(e) => handleChange(e)}
-          id="outlined-basic"
-          label="Cast"
-          variant="outlined"
-        />
-        <TextField
-          className="text-field"
-          name="img2"
-          value={inpValues.img2}
-          onChange={(e) => handleChange(e)}
-          id="outlined-basic"
-          label="Image2"
-          variant="outlined"
-        />
-        <TextField
-          className="text-field"
-          name="trailer"
-          value={inpValues.trailer}
-          onChange={(e) => handleChange(e)}
-          id="outlined-basic"
-          label="Trailer"
-          variant="outlined"
-        />
-        <TextField
-          className="text-field"
-          name="film"
-          value={inpValues.film}
-          onChange={(e) => handleChange(e)}
-          id="outlined-basic"
-          label="Film"
-          variant="outlined"
-        />
-        <Button
+        <FormControl className="text-field">
+          <InputLabel id="demo-simple-select-label">Время</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            name="time"
+            value={inpValues.time}
+            label="Время"
+            onChange={(e) => handleChange(e)}
+          >
+            <MenuItem value={"09:00"}>09:00</MenuItem>
+            <MenuItem value={"09:30"}>09:30</MenuItem>
+            <MenuItem value={"10:00"}>10:00</MenuItem>
+            <MenuItem value={"10:30"}>10:30</MenuItem>
+            <MenuItem value={"11:00"}>11:00</MenuItem>
+            <MenuItem value={"11:30"}>11:30</MenuItem>
+            <MenuItem value={"12:00"}>12:00</MenuItem>
+            <MenuItem value={"12:30"}>12:30</MenuItem>
+          </Select>
+        </FormControl>
+        <Button type="submit" variant="contained" className="text-button">
+          Сохранить
+        </Button>
+        {/* <Button
           type="submit"
           variant="contained"
           color="warning"
           className="text-button"
         >
           Submit
-        </Button>
+        </Button> */}
       </form>
     </div>
   );

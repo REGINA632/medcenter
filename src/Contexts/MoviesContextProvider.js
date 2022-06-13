@@ -56,7 +56,10 @@ const MoviesContextProvider = ({ children }) => {
   const addProduct = async (newProduct) => {
     try {
       let res = await axios.post(API, newProduct);
-      notify("success", `Product ${newProduct.title} successfully added!`);
+      notify(
+        "success",
+        `Пациент ${newProduct.имя} ${newProduct.фамилия} успешно добавлена!`
+      );
       navigate("/admin");
     } catch (err) {
       notifyError(err);
@@ -67,7 +70,7 @@ const MoviesContextProvider = ({ children }) => {
   const deleteProduct = async (prod) => {
     try {
       let res = await axios.delete(`${API}/${prod.id}`);
-      notify("success", `Product ${prod.title} successfully deleted!`);
+      notify("success", `Данные ${prod.имя} ${prod.фамилия} удалены`);
       getProducts();
     } catch (err) {
       notifyError(err);
@@ -93,7 +96,10 @@ const MoviesContextProvider = ({ children }) => {
   const saveEditedProd = async (editedProd) => {
     try {
       let res = await axios.patch(`${API}/${editedProd.id}`, editedProd);
-      notify("info", `Product ${editedProd.title} succesfully updated`);
+      notify(
+        "info",
+        `Данные ${editedProd.имя} ${editedProd.фамилия} изменены!`
+      );
       getProducts();
       navigate("/admin");
     } catch (err) {

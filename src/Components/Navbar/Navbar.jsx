@@ -22,23 +22,15 @@ import HdIcon from "@mui/icons-material/Hd";
 import FeedIcon from "@mui/icons-material/Feed";
 import "./Navbar.css";
 
-import "./Navbar.css";
-import LiveSearch from "../LiveSearch/LiveSearch";
-import { useCart } from "../../Contexts/CartContextProvider";
+import Logo from "../Header/Foto/Logo.jpg";
+
 import { useAuth } from "../../Contexts/AuthContextProvider";
-import { useFavorite } from "../../Contexts/FavoriteContextProvider";
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const { getCartLength, cartLength } = useCart();
-  const { fav } = useFavorite();
   const { currentUser, logOutUser } = useAuth();
-
-  React.useEffect(() => {
-    getCartLength();
-  }, []);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -97,14 +89,6 @@ export default function Navbar() {
 
       {!currentUser?.isLogged && (
         <MenuItem onClick={handleMenuClose}>
-          <Link to="/register" className="mobile-link">
-            Register
-          </Link>
-        </MenuItem>
-      )}
-
-      {!currentUser?.isLogged && (
-        <MenuItem onClick={handleMenuClose}>
           <Link to="/login" className="mobile-link">
             Login
           </Link>
@@ -135,7 +119,7 @@ export default function Navbar() {
           <HdIcon />
         </IconButton>
         <Link to="/movies" className="mobile-link">
-          <p onClick={handleMobileMenuClose}>Movies</p>
+          <p onClick={handleMobileMenuClose}>О нас</p>
         </Link>
       </MenuItem>
       <MenuItem>
@@ -144,7 +128,7 @@ export default function Navbar() {
         </IconButton>
         <a href="https://www.shopdisney.com/?cmp=OTL-Dcom_ChromShpIconB_Shop_EFC28055&efc=280559&att=DcomM_HP_Feed_DSIMobileRedirect_t">
           {" "}
-          <p onClick={handleMobileMenuClose}>Shop</p>
+          <p onClick={handleMobileMenuClose}>Цены</p>
         </a>
       </MenuItem>
       <MenuItem>
@@ -152,7 +136,7 @@ export default function Navbar() {
           <FeedIcon />
         </IconButton>
         <Link to="/more" className="mobile-link">
-          <p onClick={handleMobileMenuClose}>More</p>
+          <p onClick={handleMobileMenuClose}>Отделения</p>
         </Link>
       </MenuItem>
       <MenuItem>
@@ -160,7 +144,7 @@ export default function Navbar() {
           <LocalMallIcon />
         </IconButton>
         <Link to="/cart" className="mobile-link">
-          <p onClick={handleMobileMenuClose}>My Cart</p>
+          <p onClick={handleMobileMenuClose}>Услуги</p>
         </Link>
       </MenuItem>
       <MenuItem>
@@ -168,9 +152,19 @@ export default function Navbar() {
           <BookmarkIcon />
         </IconButton>
         <Link to="/favorite" className="mobile-link">
-          <p onClick={handleMobileMenuClose}>My Favorites</p>
+          <p onClick={handleMobileMenuClose}>Специалисты</p>
         </Link>
       </MenuItem>
+      <MenuItem>
+        <IconButton>
+          <BookmarkIcon />
+        </IconButton>
+        <Link to="/favorite" className="mobile-link">
+          <p onClick={handleMobileMenuClose}>Контакты</p>
+        </Link>
+        {/* <a class="nav-link text-black" href="#about">Контакты</a> */}
+      </MenuItem>
+
       {currentUser?.isAdmin && (
         <MenuItem>
           <IconButton
@@ -207,14 +201,13 @@ export default function Navbar() {
           <Button component={Link} to="/" sx={{ width: "8%" }}>
             <img
               width="100%"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Disney_wordmark.svg/1280px-Disney_wordmark.svg.png"
+              // height="50px"
+              // src="https://pbs.twimg.com/profile_images/887134102641672192/ZVmUUvNz_400x400.jpg"
+              // src="https://centrserdce.ru/local/assets/img/favicon/og_image.jpg"
+              src={Logo}
               alt=""
             />
           </Button>
-
-          {/* Живой поиск */}
-          <LiveSearch />
-          {/* Живой поиск */}
 
           <Box
             sx={{
@@ -224,6 +217,80 @@ export default function Navbar() {
             }}
           >
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              <Button
+                sx={{
+                  m: 2,
+                  color: "black",
+                  display: "block",
+                  fontSize: "14px",
+                }}
+                component={Link}
+                to="/about"
+              >
+                О нас
+              </Button>
+
+              <Button
+                sx={{
+                  m: 2,
+                  color: "black",
+                  display: "block",
+                  fontSize: "14px",
+                }}
+                component={Link}
+                to="/price"
+              >
+                Цены
+              </Button>
+              <Button
+                sx={{
+                  m: 2,
+                  color: "black",
+                  display: "block",
+                  fontSize: "14px",
+                }}
+                component={Link}
+                to="/otdelenie"
+              >
+                Отделения
+              </Button>
+              <Button
+                sx={{
+                  m: 2,
+                  color: "black",
+                  display: "block",
+                  fontSize: "14px",
+                }}
+              >
+                <a class="nav-link text-black" href="#servic">
+                  Услуги
+                </a>
+              </Button>
+              <Button
+                sx={{
+                  m: 2,
+                  color: "black",
+                  display: "block",
+                  fontSize: "14px",
+                }}
+              >
+                <a class="nav-link text-black" href="#specialist">
+                  Срециалисты
+                </a>
+              </Button>
+              <Button
+                sx={{
+                  m: 2,
+                  color: "black",
+                  display: "block",
+                  fontSize: "14px",
+                }}
+              >
+                <a class="nav-link text-black" href="#kontact">
+                  Контакты
+                </a>
+              </Button>
+
               {currentUser?.isAdmin && (
                 <Button
                   sx={{
@@ -235,77 +302,24 @@ export default function Navbar() {
                   component={Link}
                   to="/admin"
                 >
-                  ADMIN
+                  Рабочий стол
                 </Button>
               )}
-              <Button
-                sx={{
-                  m: 2,
-                  color: "black",
-                  display: "block",
-                  fontSize: "14px",
-                }}
-                component={Link}
-                to="/movies"
-              >
-                Movies
-              </Button>
-
-              <Button
-                sx={{
-                  m: 2,
-                  color: "black",
-                  display: "block",
-                  fontSize: "14px",
-                }}
-              >
-                {" "}
-                <a
-                  style={{ textDecoration: "none" }}
-                  href="https://www.shopdisney.com/?cmp=OTL-Dcom_ChromShpIconB_Shop_EFC28055&efc=280559&att=DcomM_HP_Feed_DSIMobileRedirect_t"
-                >
-                  Shop
-                </a>
-              </Button>
-              <Button
-                sx={{
-                  m: 2,
-                  color: "black",
-                  display: "block",
-                  fontSize: "14px",
-                }}
-                component={Link}
-                to="/more"
-              >
-                More
-              </Button>
             </Box>
           </Box>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Link to="/favorite" style={{ color: "black" }}>
-              <IconButton
-                size="large"
-                edge="end"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <BookmarksIcon color="warning" />
-              </IconButton>
-            </Link>
-            <Link to="/cart" style={{ color: "black" }}>
-              <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <Badge badgeContent={+cartLength} color="warning">
-                  <ShoppingCartIcon />
-                </Badge>
-              </IconButton>
-            </Link>
-
+            <Button
+              sx={{
+                m: 2,
+                color: "black",
+                display: "block",
+                fontSize: "14px",
+              }}
+              component={Link}
+              to="/reseption"
+            >
+              Записаться на прием
+            </Button>
             <IconButton
               size="large"
               edge="end"

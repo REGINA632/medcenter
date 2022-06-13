@@ -1,11 +1,11 @@
-.form {
+/* .form {
   background-color: antiquewhite;
-}
+} */
 .text-field {
-  margin: 2em !important;
+  margin: 1em !important;
 }
 .text-button {
-  max-width: 200px;
+  max-width: 300px;
   margin-bottom: 10px !important;
   align-self: center;
 }

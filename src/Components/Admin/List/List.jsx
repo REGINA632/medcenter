@@ -29,8 +29,7 @@ const List = () => {
   };
 
   return (
-    <div style={{ marginBottom: "20px" }}>
-      <h2>List of Products</h2>
+    <div style={{ margin: "20px 0" }}>
       {products && products.length > 0 ? (
         <TableContainer component={Paper}>
           <Table
@@ -40,36 +39,27 @@ const List = () => {
           >
             <TableHead>
               <TableRow>
-                <TableCell sx={{ fontWeight: "bold" }}>Title</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Имя</TableCell>
                 <TableCell sx={{ fontWeight: "bold" }} align="left">
-                  Type
+                  Фамилия
                 </TableCell>
                 <TableCell sx={{ fontWeight: "bold" }} align="left">
-                  Image
+                  Отчество
                 </TableCell>
                 <TableCell sx={{ fontWeight: "bold" }} align="left">
-                  Price
+                  Дата Рождения
                 </TableCell>
                 <TableCell sx={{ fontWeight: "bold" }} align="left">
-                  Data
+                  Номер телефона
                 </TableCell>
                 <TableCell sx={{ fontWeight: "bold" }} align="left">
-                  Produced
+                  Врач
                 </TableCell>
                 <TableCell sx={{ fontWeight: "bold" }} align="left">
-                  Cast
+                  Дата
                 </TableCell>
                 <TableCell sx={{ fontWeight: "bold" }} align="left">
-                  img2
-                </TableCell>
-                <TableCell sx={{ fontWeight: "bold" }} align="left">
-                  Trailer
-                </TableCell>
-                <TableCell sx={{ fontWeight: "bold" }} align="left">
-                  Film
-                </TableCell>
-                <TableCell sx={{ fontWeight: "bold" }} align="left">
-                  Delete/Edit
+                  Удалить/Редактировать
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -80,28 +70,25 @@ const List = () => {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {item.title}
+                    {item.имя}
                   </TableCell>
-                  <TableCell align="left">{item.type}</TableCell>
-                  <TableCell align="left">
-                    <img width="40px" src={item.img} alt={item.title} />
-                  </TableCell>
-                  <TableCell align="left">{item.price}</TableCell>
+                  <TableCell align="left">{item.фамилия}</TableCell>
+                  <TableCell align="left">{item.отчество}</TableCell>
+                  <TableCell align="left">{item.дата_рождение}</TableCell>
+                  <TableCell align="left">{item.телефон}</TableCell>
+                  <TableCell align="left">{item.врач}</TableCell>
                   <TableCell align="left">{item.data}</TableCell>
-                  <TableCell align="left">{item.produced}</TableCell>
-                  <TableCell align="left">{item.cast}</TableCell>
-                  <TableCell align="left">{item.img2}</TableCell>
-                  <TableCell align="left">{item.trailer}</TableCell>
-                  <TableCell align="left">{item.film}</TableCell>
                   <TableCell align="left">
                     <IconButton
                       onClick={() => handleDelete(item)}
-                      sx={{ bgcolor: "warning.main" }}
+                      // sx={{ bgcolor: "warning.main" }}
                     >
                       <DeleteForeverIcon />
                     </IconButton>
                     <Link to={`edit/${item.id}`}>
-                      <IconButton sx={{ bgcolor: "warning.main" }}>
+                      <IconButton
+                      // sx={{ bgcolor: "warning.main" }}
+                      >
                         <EditIcon />
                       </IconButton>
                     </Link>

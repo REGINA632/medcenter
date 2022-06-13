@@ -5,17 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(
+  /* background: linear-gradient(
     45deg,
-    #654ea3,
-    #ce7399,
+    #7860b9,
+    #e48eb2,
     #aa94e7,
-    #bb5c83,
+    #e590b4,
     #79a4f0,
     #dc89d2
   );
   animation: bg 10s infinite ease-in-out;
-  background-size: 400% 400%;
+  background-size: 400% 400%; */
+  background-color: aliceblue;
 }
 
 @keyframes bg {

@@ -29,7 +29,7 @@ const Filter = ({
   // };
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div>
       {/* <Button onClick={btnFilter}>
         <h2 style={{ color: "black" }}>Filter</h2>
       </Button> */}
@@ -47,47 +47,31 @@ const Filter = ({
               setPage(1);
             }}
           >
-            <FormControlLabel value="all" control={<Radio />} label="All" />
+            <FormControlLabel value="all" control={<Radio />} label="Все" />
             <FormControlLabel
-              value="Action/Adventure"
+              value="Намозов Улугбек Тагойбекович"
               control={<Radio />}
-              label="Action/Adventure"
+              label="Намозов У.Т."
             />
             <FormControlLabel
-              value="Animation"
+              value="Магоматова Лариса Руслановна"
               control={<Radio />}
-              label="Animation"
+              label="Магоматова Л.Р."
             />
             <FormControlLabel
-              value="Classics"
+              value="Ряскин Владимир Иванович"
               control={<Radio />}
-              label="Classics"
+              label="Ряскин В.И."
             />
             <FormControlLabel
-              value="Comedy"
+              value="Жаринова Мария Владимировна"
               control={<Radio />}
-              label="Comedy"
-            />
-            <FormControlLabel value="Drama" control={<Radio />} label="Drama" />
-            <FormControlLabel
-              value="Fantasy"
-              control={<Radio />}
-              label="Comedy"
+              label="Жаринова М.В."
             />
             <FormControlLabel
-              value="Musical"
+              value="Маленков Дмитрий Андреевич"
               control={<Radio />}
-              label="Musical"
-            />
-            <FormControlLabel
-              value="Romance"
-              control={<Radio />}
-              label="Romance"
-            />
-            <FormControlLabel
-              value="Science Fiction"
-              control={<Radio />}
-              label="Science Fiction"
+              label="Маленков Д.А."
             />
           </RadioGroup>
         </FormControl>

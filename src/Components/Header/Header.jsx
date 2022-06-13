@@ -7,28 +7,51 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 
-// Foto
-import Scrat from "./Foto/Scrat.PNG";
-import Tor from "./Foto/Tor.PNG";
-import disneyLand from "./Foto/disneyLand.PNG";
-import Shop from "./Foto/Shop.PNG";
-import Subscribe from "../Subscribe/Subscribe";
+import headerFoto from "./Foto/headerFoto.png";
+
+import { Link } from "react-router-dom";
+
+import Carusel from "../Carusel/Carusel";
 
 const Header = () => {
   return (
-    <div
-    // style={{ backgroundColor: "#eceff1" }}
-    >
+    <>
       <Box>
-        {/* <img src="https://i.gifer.com/PDxH.gif" alt="" /> */}
-        <img
-          width="100%"
-          src="https://i.pinimg.com/originals/11/ab/c1/11abc1d3e7c9bbbeccf3d2fb92ebe312.jpg"
-          // src="https://i.gifer.com/JESX.gif"
-          alt=""
-        />
+        <Grid
+          spacing={0}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Grid item xs={12} sm={4}>
+            <Typography variant="h4" align="left" ml="150px">
+              МЫ ЗАСТАВИМ
+            </Typography>
+            <Typography variant="h4" align="left" m="0 0 20px 150px">
+              ВАШЕ СЕРДЦЕ БИТЬСЯ
+            </Typography>
+            <Typography variant="subtitle1" align="left" ml="150px">
+              Более 10 лет специализируемся
+            </Typography>
+            <Typography variant="subtitle1" align="left" ml="150px">
+              на выполнении сложных операций на сердце
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={8}>
+            <img width="100%" src={headerFoto} alt="" />
+          </Grid>
+        </Grid>
       </Box>
+
+      {/* 2 наши преимущества */}
       <Container sx={{ marginTop: "40px" }}>
+        <h2
+          style={{ textAlign: "center", fontSize: "30px", marginTop: "50px" }}
+        >
+          НАШИ ПРЕИМУЩЕСТВА
+        </h2>
         <Grid
           container
           spacing={3}
@@ -41,162 +64,180 @@ const Header = () => {
           }}
         >
           <Grid
+            className="con-item"
             item
             xs={12}
             sm={6}
-            md={3}
+            md={4}
             sx={{
               display: "flex",
             }}
           >
-            <Card sx={{ maxWidth: 300 }}>
+            <Card sx={{ maxWidth: 400 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   height="350"
-                  image={Tor}
-                  alt=" Thor: Love and Thunder"
+                  image="https://zdrav.expert/images/thumb/7/7c/638991e85d4b6e644dbcacdd30a34a32.jpg/840px-638991e85d4b6e644dbcacdd30a34a32.jpg"
+                  alt=" "
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="div">
-                    Thor: Love and Thunder
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Marvel Studios' Thor: Love and Thunder Arrives Only in
-                    Theaters July 8
+                    Современное медицинское оборудование и передовые технологии
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <a
-                  style={{ textAlign: "center" }}
-                  href="https://video.disney.com/watch/marvel-studios-thor-love-and-thunder-official-teaser-5dcf0ac696dccebd6b4f2a72"
-                >
-                  Watch Trailer
-                </a>
-              </CardActions>
             </Card>
           </Grid>
           <Grid
             item
             xs={12}
             sm={6}
-            md={3}
+            md={4}
             sx={{
               display: "flex",
             }}
           >
-            <Card sx={{ maxWidth: 300 }}>
+            <Card sx={{ maxWidth: 400 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   height="350"
-                  image={Scrat}
+                  image="http://www.alemarmed.ru/images/article/oborydovanie-v-grecii.jpg"
                   alt="Ice Age: Scrat Tales"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="div">
-                    Ice Age: Scrat Tales
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Six New Original Shorts Now Streaming on Disney+
+                    Оперативная диагностикa оборудование и передовые технологии
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <a
-                  style={{ textAlign: "center" }}
-                  href="https://video.disney.com/watch/marvel-studios-thor-love-and-thunder-official-teaser-5dcf0ac696dccebd6b4f2a72"
-                >
-                  Stream Now
-                </a>
-              </CardActions>
             </Card>
           </Grid>
           <Grid
             item
             xs={12}
             sm={6}
-            md={3}
+            md={4}
             sx={{
               display: "flex",
             }}
           >
-            <Card sx={{ maxWidth: 300 }}>
+            <Card sx={{ maxWidth: 400 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   height="350"
-                  image={disneyLand}
+                  image="https://www.ckbran.ru/images/kompleksnoe_obsledovanie1.jpg"
                   alt="Walt Disney World"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="div">
-                    Walt Disney World
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Stay in the Magic! Save Up to $500 on a 5-Night Stay at
-                    Select Disney Resort Hotels
+                    Возможность получить комплексное медицинское обследование
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <a
-                  style={{ textAlign: "center" }}
-                  href="https://disneyworld.disney.go.com/special-offers/spring-2022-room-offer/?CMP=AFC-DPFY22Q1DIENT0036&DISCID=DI_HP_cardgrid"
-                >
-                  Offer Details
-                </a>
-              </CardActions>
+            </Card>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          spacing={3}
+          sx={{
+            display: "flex",
+            // alignItems: "baseline",
+            justifyContext: "space-evenly",
+            textAlign: "center",
+            marginTop: "20px",
+          }}
+        >
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            sx={{
+              display: "flex",
+            }}
+          >
+            <Card sx={{ maxWidth: 400 }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="350"
+                  image="https://cdnimg.rg.ru/img/content/187/07/84/12_t_650x433.jpg"
+                  alt=" Thor: Love and Thunder"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h6" component="div">
+                    Наличие своей лаборатории
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
             </Card>
           </Grid>
           <Grid
             item
             xs={12}
             sm={6}
-            md={3}
+            md={4}
             sx={{
               display: "flex",
             }}
           >
-            <Card sx={{ maxWidth: 300 }}>
+            <Card sx={{ maxWidth: 400 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   height="350"
-                  image={Shop}
-                  alt="shopDisney"
+                  image="https://homedoctor.com.ua/image/uploads/Kardiolog/15_main.jpg"
+                  alt="Ice Age: Scrat Tales"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="div">
-                    shopDisney
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    See Where Wishes Come True, and Experience the Wonders That
-                    Await
+                    Ведущие кардиохирурги
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <a
-                  style={{ textAlign: "center" }}
-                  href="https://www.shopdisney.com/?cmp=OTL-Dcom&att=DcomM_CG_Evergreen&efc=280559"
-                >
-                  Shop Now
-                </a>
-              </CardActions>
+            </Card>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            sx={{
+              display: "flex",
+            }}
+          >
+            <Card sx={{ maxWidth: 400 }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="350"
+                  image="https://pacifichosp.com/static/img/medical-tourism/tiles/tile5.png?v=1"
+                  alt="Walt Disney World"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h6" component="div">
+                    Комфортные условия
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
             </Card>
           </Grid>
         </Grid>
 
+        {/* НАШИ УСЛУГИ */}
         <h2
+          id="servic"
           style={{ textAlign: "center", fontSize: "30px", marginTop: "50px" }}
         >
-          Disney News
+          НАШИ УСЛУГИ
         </h2>
         <Grid
           container
-          spacing={3}
+          spacing={2}
           sx={{
             display: "flex",
             alignItems: "baseline",
@@ -207,132 +248,264 @@ const Header = () => {
             item
             xs={12}
             sm={6}
-            md={3}
+            md={4}
+            lg={3}
             sx={{
               display: "flex",
+              flexDirection: "column",
             }}
           >
-            <Card sx={{ maxWidth: 345 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="https://lumiere-a.akamaihd.net/v1/images/moonknightnew_1970dd6b.png"
-                  alt="NEWS DISNEY+"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="caption" component="div">
-                    NEWS DISNEY+
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Oscar Isaac Shines as Dual Characters in Marvel Studios’
-                    Moon Knight
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+            <img
+              width="100%"
+              src="https://doktor-s-vami.ru/upload/000/u1/aa/30/c38dd454.jpg"
+              alt=""
+            />
+            <Typography variant="h6" align="center" m="20px 0 ">
+              Кардиолог
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={{ borderRadius: "50px" }}
+              component={Link}
+              to="/kardiolog"
+            >
+              Подробнее
+            </Button>
+          </Grid>
+
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <img
+              width="100%"
+              src="https://kdc.clinic/wp-content/uploads/eho-kg-2.jpg"
+              alt=""
+            />
+            <Typography variant="h6" align="center" m="20px 0 ">
+              Эхокардиография (ЭхоКГ)
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={{ borderRadius: "50px" }}
+              component={Link}
+              to="/echocg"
+            >
+              Подробнее
+            </Button>
           </Grid>
           <Grid
             item
             xs={12}
             sm={6}
-            md={3}
+            md={4}
+            lg={3}
             sx={{
               display: "flex",
+              flexDirection: "column",
             }}
           >
-            <Card sx={{ maxWidth: 345, height: "256px" }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="https://lumiere-a.akamaihd.net/v1/images/cheaperbythedoz1_2d409397.png"
-                  alt="NEWS DISNEY+"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="caption" component="div">
-                    NEWS DISNEY+
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Cheaper by the Dozen Offers a Fresh Take on the Classic Hit
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+            <img
+              width="100%"
+              src="https://medkomcenter.ru/upload/medialibrary/2c6/2c6e9d5a980d9e0b4a29b32d1be22bee.jpg"
+              alt=""
+            />
+            <Typography variant="h6" align="center" m="20px 0 ">
+              Электрокардиограмма (ЭКГ){" "}
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={{ borderRadius: "50px" }}
+              component={Link}
+              to="/ecg"
+            >
+              Подробнее
+            </Button>
           </Grid>
           <Grid
             item
             xs={12}
             sm={6}
-            md={3}
+            md={4}
+            lg={3}
             sx={{
               display: "flex",
+              flexDirection: "column",
             }}
           >
-            <Card sx={{ maxWidth: 345 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="https://lumiere-a.akamaihd.net/v1/images/betternate1_68ecdbc9.jpeg"
-                  alt="NEWS DISNEY+"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="caption" component="div">
-                    NEWS DISNEY+
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    The New Disney Original Film Better Nate Than Ever Shares
-                    the True Meaning of Destiny
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+            <img
+              width="100%"
+              src="https://onlyclinic.ru/sites/default/files/inline-images/%D0%B2%D0%B5%D0%BB%D0%BE%D1%8D%D1%80%D0%B3%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F%20%D0%B2%20%D0%BD%D0%B8%D0%B6%D0%BD%D0%B5%D0%BC%20%D0%BD%D0%BE%D0%B2%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B5_0.jpg"
+              alt=""
+            />
+            <Typography variant="h6" align="center" m="20px 0 ">
+              Велоэргометрия (ВЭМ)
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={{ borderRadius: "50px" }}
+              component={Link}
+              to="/vem"
+            >
+              Подробнее
+            </Button>
+          </Grid>
+        </Grid>
+
+        <Grid
+          container
+          spacing={2}
+          sx={{
+            display: "flex",
+            alignItems: "baseline",
+            justifyContext: "space-evenly",
+            margin: "20px 0",
+          }}
+        >
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <img
+              width="100%"
+              src="https://doktorpozvonkov.ru/wp-content/uploads/sutochniy-monitoring-davlenia.jpg"
+              alt=""
+            />
+            <Typography variant="h6" align="center" m="20px 0 ">
+              Суточное АД-мониторирование
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={{ borderRadius: "50px" }}
+              component={Link}
+              to="/ad"
+            >
+              Подробнее
+            </Button>
           </Grid>
           <Grid
             item
             xs={12}
             sm={6}
-            md={3}
+            md={4}
+            lg={3}
             sx={{
               display: "flex",
+              flexDirection: "column",
             }}
           >
-            <Card sx={{ maxWidth: 345 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="https://lumiere-a.akamaihd.net/v1/images/screen_shot_2022-03-22_at_9_f7e3db65.png"
-                  alt="NEWS DISNEY+"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="caption" component="div">
-                    NEWS DISNEY+
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    All the Reasons Why Disney and Pixar’s Turning Red Deserves
-                    a Closer Look
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+            <img
+              width="100%"
+              src="https://www.kardiocentr.kg/img/service/07%20%D0%9A%D0%BE%D1%80%D0%BE%D0%BD%D0%B0%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%8F.jpg"
+              alt=""
+            />
+            <Typography variant="h6" align="center" m="20px 0 ">
+              Коронарография (КАГ) Стентирование
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={{ borderRadius: "50px" }}
+              component={Link}
+              to="/kag"
+            >
+              Подробнее
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <img
+              width="100%"
+              src="https://www.kardiocentr.kg/img/service/09.jpg"
+              alt=""
+            />
+            <Typography variant="h6" align="center" m="20px 0 ">
+              АОРТОКОРОНАРНОЕ ШУНТИРОВАНИЕ (АКШ){" "}
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={{ borderRadius: "50px" }}
+              component={Link}
+              to="/aksh"
+            >
+              Подробнее
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <img
+              width="100%"
+              src="https://www.kardiocentr.kg/img/service/12.jpg"
+              alt=""
+            />
+            <Typography variant="h6" align="center" m="20px 0 ">
+              Установка электрокардиостимулятора{" "}
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={{ borderRadius: "50px" }}
+              component={Link}
+              to="/kardiostim"
+            >
+              Подробнее
+            </Button>
           </Grid>
         </Grid>
       </Container>
 
-      <Box sx={{ backgroundColor: "#1A153F" }}>
+      {/* ВАС ЛЕЧАТ ВЫСОКОКВАЛИФИЦИРОВАННЫЕ СПЕЦИАЛИСТЫ */}
+      <Container maxWidth="xl">
+        <h2
+          id="specialist"
+          style={{ textAlign: "center", fontSize: "30px", marginTop: "50px" }}
+        >
+          ВАС ЛЕЧАТ ВЫСОКОКВАЛИФИЦИРОВАННЫЕ СПЕЦИАЛИСТЫ
+        </h2>
+        <Carusel />
+      </Container>
+
+      <Box sx={{ backgroundColor: "#fafafa" }}>
         <Container sx={{ marginTop: "50px", padding: "10px 0 40px 0" }}>
           <h2
+            id="kontact"
             style={{
               textAlign: "center",
               fontSize: "30px",
-              // marginTop: "50px",
-              color: "white",
               paddingBottom: "10px",
             }}
           >
-            Trending on Disney+
+            КОНТАКТЫ
           </h2>
           <Grid
             container
@@ -341,8 +514,8 @@ const Header = () => {
               display: "flex",
               alignItems: "baseline",
               justifyContext: "space-evenly",
-              textAlign: "center",
-              color: "white",
+              // textAlign: "left",
+              // color: "white",
             }}
           >
             <Grid
@@ -354,21 +527,21 @@ const Header = () => {
                 flexDirection: "column",
               }}
             >
-              <img
-                src="https://m.media-amazon.com/images/M/MV5BODY0Y2QzM2MtYzFlNC00MDBjLTkwM2ItYWIxYjA3NjhmNmExXkEyXkFqcGdeQXVyMzExODEzNDA@._V1_.jpg"
-                alt=""
-              />
-              <Typography gutterBottom variant="h6" component="div">
-                Now on Disney+
+              <Typography variant="subtitle1">
+                Адреса филиалов в г. Бишкек
               </Typography>
-              <Typography variant="body2" color="white">
-                OLIVIA RODRIGO: driving home 2 u (a SOUR film) is streaming on
-                Disney+.
+              <Typography variant="h6" mt="10px">
+                ул. Абдумомунова 236
               </Typography>
-              <a style={{ color: "white", margin: "10px 0" }} href="">
-                {" "}
-                Stream Now
-              </a>
+              <Typography variant="body2">(пер.Тоголок Молдо)</Typography>
+              <Typography variant="h6" mt="10px">
+                ул. Абдумомунова 236
+              </Typography>
+              <Typography variant="body2">(пер.Тоголок Молдо)</Typography>
+              <Typography variant="h6" mt="10px">
+                ул. Абдумомунова 236
+              </Typography>
+              <Typography variant="body2">(пер.Тоголок Молдо)</Typography>
             </Grid>
             <Grid
               item
@@ -379,113 +552,25 @@ const Header = () => {
                 flexDirection: "column",
               }}
             >
-              <img
-                width="93%"
-                src="http://www.hollywoodchicago.com/sites/default/files/003aNateEver.jpg"
-                // src="https://img1.hotstarext.com/image/upload/f_auto,t_web_m_1x/sources/r1/cms/prod/2528/1162528-h-350d7f5aa551"
-                alt=""
-              />
-              <Typography gutterBottom variant="h6" component="div">
-                Better Nate Than Ever
+              <Typography variant="subtitle1">Прием звонков 24/7</Typography>
+              <Typography variant="h6" mt="10px">
+                +996 (312) 46 85 15
               </Typography>
-              <Typography variant="body2" color="white">
-                Now streaming, only on Disney+!
-              </Typography>
-              <a style={{ color: "white", margin: "10px 0" }} href="">
-                {" "}
-                Stream Now
-              </a>
+              <Typography variant="h6">+996 (552) 30 32 06</Typography>
             </Grid>
           </Grid>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2923.7891933950223!2d74.58995091546709!3d42.87729341027228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec98281e85c63%3A0x305e5b2a69cb4fcb!2sMakers%20Studio!5e0!3m2!1sru!2skg!4v1649415754983!5m2!1sru!2skg"
+            width="100%"
+            height="400"
+            style={{ border: "0px", margin: "20px 0" }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </Container>
       </Box>
-
-      <Container sx={{ paddingBottom: "40px" }}>
-        <h2
-          style={{
-            textAlign: "center",
-            fontSize: "30px",
-            margin: "30px 0",
-          }}
-        >
-          Vacation with Disney Parks
-        </h2>
-        <Grid
-          container
-          spacing={3}
-          sx={{
-            display: "flex",
-            alignItems: "baseline",
-            justifyContext: "space-evenly",
-            textAlign: "center",
-          }}
-        >
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            sx={{
-              display: "flex",
-            }}
-          >
-            <Card sx={{ maxWidth: 700, height: 430 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="270"
-                  image="https://www.visittheusa.com/sites/default/files/styles/hero_l/public/images/hero_media_image/2021-09/95e7d963-79dc-46f5-9388-4a128a086b2a.jpeg?h=58c8a5e7&itok=c4aYEBPF"
-                  alt="NEWS DISNEY+"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="caption" component="div">
-                    Start Planning Today{" "}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    View special offers for your Walt Disney World ® Resort
-                    vacation during The World's Most Magical Celebration!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <a href="https://disneyworld.disney.go.com/special-offers/?CMP=AFC-DPFY21Q1DIENT0099&DISCID=DI_HP_cardgrid_h">
-                Learn More
-              </a>
-            </Card>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            sx={{
-              display: "flex",
-            }}
-          >
-            <Card sx={{ maxWidth: 700, height: 430 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="270"
-                  image="https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/900/160/75/vision-dam/digital/parks-platform/parks-global-assets/disneyland/resorts/disneyland-hotel/0818ZW_07125DZ-45x8.jpg?2022-03-10T23:11:29+00:00"
-                  alt=""
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="caption" component="div">
-                    Enjoy a Spectacular Spring Offer!
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Save Up to 25% on Select Stays at a Disneyland ® Resort
-                    hotel.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <a href="https://disneyland.disney.go.com/offers-discounts/spring-room-offer/?CMP=AFC-DPFY22Q1DIENT0077&DISCID=DI_HP_promo">
-                Learn More
-              </a>
-            </Card>
-          </Grid>
-        </Grid>
-        {/* <Subscribe /> */}
-      </Container>
-    </div>
+    </>
   );
 };
 

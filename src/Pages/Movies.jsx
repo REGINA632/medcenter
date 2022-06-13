@@ -7,7 +7,7 @@ const Movies = () => {
     <>
       <Container>
         <h1>Disney Movies</h1>
-        <ProdList />
+        {/* <ProdList /> */}
       </Container>
     </>
   );

@@ -2,7 +2,7 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 
 import Form from "../Form/Form";
@@ -12,11 +12,18 @@ const Add = () => {
   const navigate = useNavigate();
   const { addProduct } = useProductContext();
   return (
-    <div style={{ textAlign: "center" }}>
-      <IconButton onClick={() => navigate(-1)}>
-        <ArrowLeftIcon fontSize="large" /> Go Back
-      </IconButton>
-      <h2 style={{ color: "orange" }}>Add new product</h2>
+    <div>
+      <Button
+        onClick={() => navigate(-1)}
+        variant="contained"
+        style={{ textDecoration: "none" }}
+      >
+        Назад
+      </Button>
+      {/* <IconButton onClick={() => navigate(-1)}>
+        <ArrowLeftIcon fontSize="large" /> Назад
+      </IconButton> */}
+      <h2 style={{ textAlign: "center" }}>Заполните фому</h2>
       <Form saveValues={addProduct} compForEdit={false} />
     </div>
   );

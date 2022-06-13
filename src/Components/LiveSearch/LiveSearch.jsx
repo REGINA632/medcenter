@@ -17,8 +17,8 @@ const Search = styled("div")(({ theme }) => ({
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
+    marginLeft: theme.spacing(0),
+    width: "50%",
   },
 }));
 
@@ -57,7 +57,7 @@ const LiveSearch = () => {
   useEffect(() => {
     let currentParams = Object.fromEntries([...searchParams]);
 
-    if (location.pathname === "/movies") {
+    if (location.pathname === "/admin") {
       setSearchParams({
         ...currentParams,
         _page: 1,
@@ -67,7 +67,7 @@ const LiveSearch = () => {
   }, [inpSearch]);
 
   return (
-    <Search>
+    <Search sx={{ mb: "10px" }}>
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
