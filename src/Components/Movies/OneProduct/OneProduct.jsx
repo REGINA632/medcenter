@@ -35,7 +35,7 @@ export default function OneProduct({ item }) {
         component={Link}
         to={`detail/${item.id}`}
       >
-        {item.имя} {item.фамилия}
+        {item.фио}
         {/* <Typography variant="subtitle1">
           {item.имя} {item.фамилия}
         </Typography> */}

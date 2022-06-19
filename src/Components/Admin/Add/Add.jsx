@@ -23,7 +23,7 @@ const Add = () => {
       {/* <IconButton onClick={() => navigate(-1)}>
         <ArrowLeftIcon fontSize="large" /> Назад
       </IconButton> */}
-      <h2 style={{ textAlign: "center" }}>Заполните фому</h2>
+      <h2 style={{ textAlign: "center" }}>Заполните форму</h2>
       <Form saveValues={addProduct} compForEdit={false} />
     </div>
   );
