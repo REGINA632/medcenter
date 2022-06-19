@@ -44,6 +44,7 @@ const MoviesContextProvider = ({ children }) => {
   const getProducts = async () => {
     try {
       let res = await axios.get(`${API}${window.location.search}`);
+      console.log(res);
       dispatch({
         type: ACTIONS.GET_PRODUCTS,
         payload: res,
@@ -55,11 +56,8 @@ const MoviesContextProvider = ({ children }) => {
   //Create new product
   const addProduct = async (newProduct) => {
     try {
-      let res = await axios.post(API, newProduct);
-      notify(
-        "success",
-        `Пациент ${newProduct.имя} ${newProduct.фамилия} успешно добавлена!`
-      );
+      const res = await axios.post(API, newProduct);
+      notify("success", `Пациент ${newProduct.фио} успешно добавлена!`);
       navigate("/admin");
     } catch (err) {
       notifyError(err);
@@ -70,7 +68,7 @@ const MoviesContextProvider = ({ children }) => {
   const deleteProduct = async (prod) => {
     try {
       let res = await axios.delete(`${API}/${prod.id}`);
-      notify("success", `Данные ${prod.имя} ${prod.фамилия} удалены`);
+      notify("success", `Данные ${prod.фио} удалены`);
       getProducts();
     } catch (err) {
       notifyError(err);
@@ -96,10 +94,7 @@ const MoviesContextProvider = ({ children }) => {
   const saveEditedProd = async (editedProd) => {
     try {
       let res = await axios.patch(`${API}/${editedProd.id}`, editedProd);
-      notify(
-        "info",
-        `Данные ${editedProd.имя} ${editedProd.фамилия} изменены!`
-      );
+      notify("info", `Данные ${editedProd.фио} изменены!`);
       getProducts();
       navigate("/admin");
     } catch (err) {

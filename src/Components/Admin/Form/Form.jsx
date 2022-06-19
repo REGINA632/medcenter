@@ -1,37 +1,53 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Button } from "@mui/material";
-
 import "./Form.css";
+import { useProductContext } from "../../../Contexts/MoviesContextProvider";
+
+const slots = [
+  "09:00",
+  "09:30",
+  "10:00",
+  "10:30",
+  "11:00",
+  "11:30",
+  "12:00",
+  "12:30",
+  "13:00",
+];
 
 const initValues = {
-  имя: "",
-  фамилия: "",
-  отчество: "",
-  дата_рождение: "",
-  номер_паспорта: "",
-  адрес: "",
-  город: "",
-  район: "",
+  фио: "",
   телефон: "",
-  почта: "",
   врач: "",
-  title: "",
   инн: "",
   data: "",
   time: "",
 };
 
 const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
+  const { products, getProducts } = useProductContext();
   const [inpValues, setInpValues] = useState(initValues);
+  const [theDate, setDate] = useState("");
   const { id } = useParams();
+
+  const datePatients = useMemo(() => {
+    const res = [];
+    products.forEach((patient) => {
+      if (patient.data === theDate) {
+        res.push(patient.time);
+      }
+    });
+    return res;
+  }, [theDate, products]);
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   //for edit
   useEffect(() => {
@@ -44,7 +60,7 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
     if (compForEdit && oneProd) {
       setInpValues(oneProd);
     }
-  }, [oneProd]);
+  }, [compForEdit, oneProd]);
 
   //end of for edit
 
@@ -55,14 +71,28 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
     };
     setInpValues(obj);
   };
-
+  // const handleTimeChange = (e) => {
+  //   setTime(e.target.value);
+  //   let obj = {
+  //     ...inpValues,
+  //     [e.target.name]: e.target.value,
+  //   };
+  //   setInpValues(obj);
+  // };
+  const handleDateChange = (e) => {
+    setDate(e.target.value);
+    let obj = {
+      ...inpValues,
+      [e.target.name]: e.target.value,
+    };
+    setInpValues(obj);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     let obj = {
       ...inpValues,
       price: +inpValues.price,
     };
-
     saveValues(obj);
   };
 
@@ -78,15 +108,15 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
       >
         <TextField
           className="text-field"
-          name="имя"
-          value={inpValues.имя}
+          name="фио"
+          value={inpValues.фио}
           onChange={(e) => handleChange(e)}
           id="outlined-basic"
-          label="Имя"
+          label="ФИО"
           variant="outlined"
         />
 
-        <TextField
+        {/* <TextField
           className="text-field"
           name="фамилия"
           value={inpValues.фамилия}
@@ -103,7 +133,7 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
           id="outlined-basic"
           label="Отчество"
           variant="outlined"
-        />
+        /> */}
         {/* <TextField
           className="text-field"
           name="дата_рождение"
@@ -113,7 +143,7 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
           label="Дата Рождения"
           variant="outlined"
         /> */}
-        <TextField
+        {/* <TextField
           className="text-field"
           variant="outlined"
           id="date outlined-basic"
@@ -136,7 +166,7 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
           id="outlined-basic"
           label="Паспортные данные"
           variant="outlined"
-        />
+        /> */}
         <TextField
           className="text-field"
           name="инн"
@@ -147,7 +177,7 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
           variant="outlined"
           rows={3}
         />
-        <FormControl className="text-field">
+        {/* <FormControl className="text-field">
           <InputLabel id="demo-simple-select-label">Город</InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -184,7 +214,7 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
           id="outlined-basic"
           label="Улица/Дом"
           variant="outlined"
-        />
+        /> */}
         <TextField
           className="text-field"
           name="телефон"
@@ -194,7 +224,7 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
           label="Номер телефона"
           variant="outlined"
         />
-        <TextField
+        {/* <TextField
           className="text-field"
           name="почта"
           value={inpValues.почта}
@@ -202,7 +232,7 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
           id="outlined-basic"
           label="Адрес электронной почты"
           variant="outlined"
-        />
+        /> */}
         <FormControl className="text-field">
           <InputLabel id="demo-simple-select-label">Врач</InputLabel>
           <Select
@@ -230,7 +260,7 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
             </MenuItem>
           </Select>
         </FormControl>
-        <TextField
+        {/* <TextField
           className="text-field"
           name="title"
           value={inpValues.title}
@@ -238,7 +268,7 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
           id="outlined-basic"
           label="Примечание"
           variant="outlined"
-        />
+        /> */}
         <TextField
           className="text-field"
           variant="outlined"
@@ -250,7 +280,7 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
             shrink: true,
           }}
           value={inpValues.data}
-          onChange={(e) => handleChange(e)}
+          onChange={(e) => handleDateChange(e)}
           name="data"
         />
         <FormControl className="text-field">
@@ -263,14 +293,26 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
             label="Время"
             onChange={(e) => handleChange(e)}
           >
-            <MenuItem value={"09:00"}>09:00</MenuItem>
+            {slots && slots.length ? (
+              slots.map((slot) => {
+                const isDisabled = datePatients.includes(slot);
+                return (
+                  <MenuItem disabled={isDisabled} key={slot} value={slot}>
+                    {slot}
+                  </MenuItem>
+                );
+              })
+            ) : (
+              <p>No Free Time</p>
+            )}
+            {/* <MenuItem value={"09:00"}>09:00</MenuItem>
             <MenuItem value={"09:30"}>09:30</MenuItem>
             <MenuItem value={"10:00"}>10:00</MenuItem>
             <MenuItem value={"10:30"}>10:30</MenuItem>
             <MenuItem value={"11:00"}>11:00</MenuItem>
             <MenuItem value={"11:30"}>11:30</MenuItem>
             <MenuItem value={"12:00"}>12:00</MenuItem>
-            <MenuItem value={"12:30"}>12:30</MenuItem>
+            <MenuItem value={"12:30"}>12:30</MenuItem> */}
           </Select>
         </FormControl>
         <Button type="submit" variant="contained" className="text-button">
