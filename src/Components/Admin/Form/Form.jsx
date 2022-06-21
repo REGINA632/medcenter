@@ -21,6 +21,14 @@ const slots = [
   "13:00",
 ];
 
+const vrachDokturlar = [
+  "Намозов Улугбек Тагойбекович",
+  "Магоматова Лариса Руслановна",
+  "Ряскин Владимир Иванович",
+  "Жаринова Мария Владимировна",
+  "Маленков Дмитрий Андреевич",
+];
+
 const initValues = {
   фио: "",
   телефон: "",
@@ -34,17 +42,19 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
   const { products, getProducts } = useProductContext();
   const [inpValues, setInpValues] = useState(initValues);
   const [theDate, setDate] = useState("");
+  const [theDoktur, setDoktur] = useState("");
   const { id } = useParams();
 
   const datePatients = useMemo(() => {
     const res = [];
     products.forEach((patient) => {
       if (patient.data === theDate) {
-        res.push(patient.time);
+        res.push({ vrach: patient.врач, time: patient.time });
       }
     });
     return res;
   }, [theDate, products]);
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -81,6 +91,14 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
   // };
   const handleDateChange = (e) => {
     setDate(e.target.value);
+    let obj = {
+      ...inpValues,
+      [e.target.name]: e.target.value,
+    };
+    setInpValues(obj);
+  };
+  const handleDokturChange = (e) => {
+    setDoktur(e.target.value);
     let obj = {
       ...inpValues,
       [e.target.name]: e.target.value,
@@ -233,42 +251,6 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
           label="Адрес электронной почты"
           variant="outlined"
         /> */}
-        <FormControl className="text-field">
-          <InputLabel id="demo-simple-select-label">Врач</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            name="врач"
-            value={inpValues.врач}
-            label="Врач"
-            onChange={(e) => handleChange(e)}
-          >
-            <MenuItem value={"Намозов Улугбек Тагойбекович"}>
-              Намозов Улугбек Тагойбекович
-            </MenuItem>
-            <MenuItem value={"Магоматова Лариса Руслановна"}>
-              Магоматова Лариса Руслановна
-            </MenuItem>
-            <MenuItem value={"Ряскин Владимир Иванович"}>
-              Ряскин Владимир Иванович
-            </MenuItem>
-            <MenuItem value={"Жаринова Мария Владимировна"}>
-              Жаринова Мария Владимировна
-            </MenuItem>
-            <MenuItem value={"Маленков Дмитрий Андреевич"}>
-              Маленков Дмитрий Андреевич
-            </MenuItem>
-          </Select>
-        </FormControl>
-        {/* <TextField
-          className="text-field"
-          name="title"
-          value={inpValues.title}
-          onChange={(e) => handleChange(e)}
-          id="outlined-basic"
-          label="Примечание"
-          variant="outlined"
-        /> */}
         <TextField
           className="text-field"
           variant="outlined"
@@ -284,6 +266,23 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
           name="data"
         />
         <FormControl className="text-field">
+          <InputLabel id="demo-simple-select-label">Врач</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            name="врач"
+            value={inpValues.врач}
+            label="Врач"
+            onChange={(e) => handleDokturChange(e)}
+          >
+            {vrachDokturlar.map((doktur) => (
+              <MenuItem key={doktur} value={doktur}>
+                {doktur}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl className="text-field">
           <InputLabel id="demo-simple-select-label">Время</InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -293,28 +292,28 @@ const Form = ({ saveValues, compForEdit, oneProd, getOneProduct }) => {
             label="Время"
             onChange={(e) => handleChange(e)}
           >
-            {slots && slots.length ? (
-              slots.map((slot) => {
-                const isDisabled = datePatients.includes(slot);
-                return (
-                  <MenuItem disabled={isDisabled} key={slot} value={slot}>
-                    {slot}
-                  </MenuItem>
-                );
-              })
-            ) : (
-              <p>No Free Time</p>
-            )}
-            {/* <MenuItem value={"09:00"}>09:00</MenuItem>
-            <MenuItem value={"09:30"}>09:30</MenuItem>
-            <MenuItem value={"10:00"}>10:00</MenuItem>
-            <MenuItem value={"10:30"}>10:30</MenuItem>
-            <MenuItem value={"11:00"}>11:00</MenuItem>
-            <MenuItem value={"11:30"}>11:30</MenuItem>
-            <MenuItem value={"12:00"}>12:00</MenuItem>
-            <MenuItem value={"12:30"}>12:30</MenuItem> */}
+            {slots.map((slot) => {
+              const isDisabled = datePatients.some(
+                (patient) =>
+                  patient.vrach === theDoktur && patient.time === slot
+              );
+              return (
+                <MenuItem disabled={isDisabled} key={slot} value={slot}>
+                  {slot}
+                </MenuItem>
+              );
+            })}
           </Select>
         </FormControl>
+        {/* <TextField
+          className="text-field"
+          name="title"
+          value={inpValues.title}
+          onChange={(e) => handleChange(e)}
+          id="outlined-basic"
+          label="Примечание"
+          variant="outlined"
+        /> */}
         <Button type="submit" variant="contained" className="text-button">
           Сохранить
         </Button>
